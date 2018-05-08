@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using PotholeTrack.Models;
 using System;
 using Microsoft.EntityFrameworkCore;
+using PotholeTrack.Data;
 
 namespace PotholeTrack
 {
@@ -21,6 +22,9 @@ namespace PotholeTrack
                 {
                     var context = services.GetRequiredService<PotholeContext>();
                     DbInitializer.Initialize(context);
+
+                    var userContext = services.GetRequiredService<ApplicationDbContext>();
+                    SeedUsers.Initialize(userContext);
                 }
                 catch (Exception ex)
                 {
