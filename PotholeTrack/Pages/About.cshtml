@@ -1,0 +1,26 @@
+﻿@page
+@model AboutModel
+@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+
+<h3>Why did we build this web app?</h3>
+<p>The purpose of this web application is to allow the city ample time to fix a pothole before it causes damage to a vehicle.</p>
+<p>
+    Did you know that if a driver's car is damaged by riding over a pothole, the user can report it to the city and the city
+    must pay for the damages done to the vehicle? This web app hopes to reduce the amount of money spent on reimbursements by
+    tracking the potholes and marking their severity, in order to fix them ahead of time.
+</p>
+<p>
+    According to <a href="https://www.nbcsandiego.com/news/local/San-Diego-Rejects-1-in-4-Pothole-Damage-Claims-257020241.html">
+        an article on NBC San Diego
+    </a>, San Diego's roadways are among the worst in the nation. We have paid out more than $1 million in
+    pothole damages over 10 years. We hope to save the city money and work towards a safer San Diego.
+</p>
+<p>
+    <strong>Important note about user authentication:</strong> The general public is free to view the potholes located around San Diego
+    (you do not need to be a registered user to look at potholes and severity), however, you must be a registered user in order to create a
+    new entry. Additionally, only the admin can edit and delete entries. The admin is the City of San Diego, who can edit the coordinates to
+    be more precise, or delete entries after they have fixed a pothole. Thank you!
+</p>

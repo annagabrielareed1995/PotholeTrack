@@ -1,0 +1,92 @@
+@page
+@model PotholeTrack.Pages.Potholes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<h2>Pothole Locations and Severity</h2>
+
+<h4>Important note about user authentication:</h4>
+<p style="margin-left: 40px">
+    <strong>General public:</strong> can view potholes located around San Diego.
+</p>
+<p style="margin-left: 40px">
+    <strong>Registered users:</strong> can create new pothole entries.
+</p>
+<p style="margin-left: 40px">
+    <strong>The admin:</strong> can edit and delete entries.
+</p>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pothole[0].Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pothole[0].Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pothole[0].Severity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (@UserManager.GetUserName(User) == "aamack@example.com")
+        {
+            @foreach (var item in Model.Pothole)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Severity)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+
+        else
+        {
+            @foreach (var item in Model.Pothole)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Latitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Longitude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Severity)
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
