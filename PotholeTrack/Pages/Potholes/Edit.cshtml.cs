@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,7 +11,7 @@ using PotholeTrack.Models;
 
 namespace PotholeTrack.Pages.Potholes
 {
-    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Administrator")]
     public class EditModel : PageModel
     {
         private readonly PotholeTrack.Models.PotholeContext _context;

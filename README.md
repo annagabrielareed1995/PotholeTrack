@@ -34,9 +34,14 @@ locations identified on the map. In the end we were able to get user text respon
 - Michael Baker was stumped on successfully getting 2 database contexts to function, but Anna Reed overcame that issue. We have one 
 database that contains user data and a second for pothole data.
 
-- We attempted to use roles/authorization in order to have two levels of users. A public user has not logged in and can only view data
-about potholes. A logged in user can creat/edit/delete potholes. We were unsuccessfull in implememting an overall admin to control
-user's roles. Modifications to the user's roles has to be done in the database.
+- We attempted to use roles/authorization in order to have two levels of users. A public user who has not logged in can only view data
+and details about potholes. A registered/logged in user can create pothole entries. The admin of the system can create/edit/delete pothole 
+entries. We were unsuccessfull in seeding a database with defined users and admins. Instead, while we were implementing the system and registered a 
+user@user.com and aamack@example.com, we physically changed their roles (we made aamack an administrator) in the relevant tables in the SQL Server 
+Object Explorer. In summary, all modifications to the user's roles has to be done in the database. However, this led to a problem when we published 
+the project on the Azure server. Only seeded data (from code) were established in the database, and therefore the admin data was not transferred. 
+After numerous attempts and research into how to seed users with roles through code, we were unsuccessful in getting the data to remain valid 
+after publishing to the Azure server. We attached a video screen recording to our project submission of the admin role working on our localhost.
 
 - We attempted to seed users into the database, so that different users were preloaded, but the attempt was only partially successful. 
 When seeding users, we were only successfull at getting one user seeded. The way the database is set up for the users, a hashed 

@@ -11,7 +11,7 @@ namespace PotholeTrack.Models
         {
             context.Database.EnsureCreated();
 
-            // Look for any students.
+            // Look for any potholes.
             if (context.Pothole.Any())
             {
                 return;   // DB has been seeded
